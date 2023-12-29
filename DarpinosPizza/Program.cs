@@ -1,4 +1,12 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using DarpinosPizza.Data;
 var builder = WebApplication.CreateBuilder(args);
+var connectionStr = "server=localhost;userid=root;password=895smigol;database=DarpinosPizza";
+
+
+builder.Services.AddDbContext<DarpinosPizzaContext>(options =>
+    options.UseMySql(connectionStr, ServerVersion.AutoDetect(connectionStr)));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
