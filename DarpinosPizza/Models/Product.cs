@@ -8,6 +8,7 @@ namespace DarpinosPizza.Models
         public string Name { get; set; }
         public string Category { get; set; }
         public double Price { get; set; }
+        public ICollection<User> Users { get; set; } = new List<User>();
 
         public Product()
         {
@@ -22,9 +23,16 @@ namespace DarpinosPizza.Models
             Price = price;
         }
 
-        public void TotalProducts()
+        public void AddUser(User user)
         {
-            
+            Users.Add(user);
         }
+
+        public double TotalProducts(DateTime initial, DateTime final)
+        {
+            return Users.Sum(p => p.TotalPurchases(initial, final));
+        }
+        
+       
     }
 }

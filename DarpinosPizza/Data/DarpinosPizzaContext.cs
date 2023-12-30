@@ -14,6 +14,8 @@ namespace DarpinosPizza.Data
         {
         }
 
-        public DbSet<DarpinosPizza.Models.User> User { get; set; } = default!;
+        public DbSet<User> User { get; set; } = default!;
+        public DbSet<Product> Products { get; set; } = default!;
+        public DbSet<PurchasesRecords> Purchases { get; set; } = default!;
     }
 }
